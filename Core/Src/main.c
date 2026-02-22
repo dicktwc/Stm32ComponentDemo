@@ -21,6 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdio.h>
 
 /* USER CODE END Includes */
 
@@ -62,6 +63,24 @@ static void MX_USART1_UART_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+int __io_putchar(int ch)
+{
+  uint8_t c = (uint8_t)ch;
+  HAL_UART_Transmit(&huart1, &c, 1, HAL_MAX_DELAY);
+  return ch;
+}
+
+int __io_getchar(void)
+{
+  uint8_t c = 0;
+  if (HAL_UART_Receive(&huart1, &c, 1, HAL_MAX_DELAY) == HAL_OK)
+  {
+    return c;
+  }
+  return -1;
+
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -99,6 +118,7 @@ int main(void)
   MX_I2C1_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  printf("Hello UART1\r\n");
 
   /* USER CODE END 2 */
 
