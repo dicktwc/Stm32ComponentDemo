@@ -18,7 +18,7 @@
  * 3. Read data from EEPROM
  */
 
-extern I2C_HandleTypeDef hi2c1;
+extern I2C_HandleTypeDef hi2c2;
 AT24C256_t eeprom;
 
 void AT24C256_Example(void)
@@ -34,7 +34,7 @@ void AT24C256_Example(void)
      * Step 1: Initialize AT24C256
      * ===================================================== */
     printf("[1] Initializing AT24C256...\r\n");
-    status = AT24C256_Init(&eeprom, &hi2c1, AT24C256_I2C_ADDR_0);
+    status = AT24C256_Init(&eeprom, &hi2c2, AT24C256_I2C_ADDR_0);
     if (status != HAL_OK)
     {
         printf("    ERROR: Failed to initialize AT24C256\r\n");
@@ -183,7 +183,7 @@ void AT24C256_ConfigExample(void)
     /* Initialize EEPROM if not already done */
     if (AT24C256_IsReady(&eeprom, 100) != HAL_OK)
     {
-        AT24C256_Init(&eeprom, &hi2c1, AT24C256_I2C_ADDR_0);
+        AT24C256_Init(&eeprom, &hi2c2, AT24C256_I2C_ADDR_0);
     }
 
     /* Prepare configuration data */
