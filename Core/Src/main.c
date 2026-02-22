@@ -119,7 +119,7 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   printf("Hello UART1\r\n");
-
+  AT24C256_Example();
   /* USER CODE END 2 */
 
   /* Infinite loop */
